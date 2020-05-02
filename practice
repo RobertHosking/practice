@@ -1,0 +1,78 @@
+#!/usr/local/bin/python3
+import sys
+import time
+from splinter import Browser
+browser = Browser('chrome')
+
+yogamins = int(sys.argv[1])
+yogasecs = yogamins*60
+
+def loginYoga():
+	PASS = "your downdogapp password"
+	USER = "your downdogapp email"
+	browser.visit('http://downdogapp.com/web')
+	browser.find_by_text('Email and Password').click()
+	browser.find_by_tag('input').first.fill(USER)
+	browser.find_by_tag("input")[1].fill(PASS)
+	browser.find_by_text("Submit").click()	
+
+def configYoga():
+
+	browser.find_by_text("Level").click()
+	browser.find_by_text("Beginner 2").click()
+	browser.find_by_text("SELECT").click()
+
+	browser.find_by_text("Length").click()
+	browser.find_by_text(str(yogamins) + " Minutes").click()
+	browser.find_by_text("SELECT").click()
+	
+	browser.find_by_text("Savasana").click()
+	browser.find_by_xpath('/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]').click()
+	browser.find_by_text("SELECT").click()
+	
+	browser.find_by_text("More").click()
+	browser.find_by_text("Instruction").click()
+	browser.find_by_text("Least Explanation plus Silence").click()
+	browser.find_by_text("SELECT").click()
+	
+	browser.find_by_text("Voice").click()
+	browser.find_by_text("Carina").click()	
+	browser.find_by_text("SELECT").click()
+	
+	
+def startYoga():
+	browser.find_by_text("START").click()
+	browser.find_by_text("I Agree").click()
+	time.sleep(6)
+	browser.find_by_text("Tap to begin").click()
+
+def loginMeditate():
+	PASS = "your headspace password"
+	USER = "yout headspace email"
+	browser.visit('http://headspace.com/login')
+	browser.find_by_name("email").fill(USER)
+	browser.find_by_name('password').fill(PASS)
+	browser.find_by_text("Log in")[1].click()
+
+def startMeditate():
+	browser.find_by_xpath('/html/body/div/div[1]/div[2]/div/div/div/div/div[2]/div/button/div').click()
+	browser.find_by_text("Begin").first.click()
+	
+def closeBrowser():
+	window = browser.windows[0]
+	window.close()
+
+def main():
+	loginYoga()
+	time.sleep(3)
+	configYoga()
+	startYoga()
+	time.sleep(yogasecs)
+	loginMeditate()
+	startMeditate()
+	
+	
+if __name__ == "__main__":
+	main()
+print("Namaste.")
+

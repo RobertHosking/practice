@@ -8,8 +8,8 @@ yogamins = int(sys.argv[1])
 yogasecs = yogamins*60
 
 def loginYoga():
-	PASS = "your downdogapp password"
-	USER = "your downdogapp email"
+	PASS = "VUeUXco5jLKoY#4hX$T38fgPBAv^FF0hKBdMq*63"
+	USER = "thedubiouslimabean@hotmail.com"
 	browser.visit('http://downdogapp.com/web')
 	browser.find_by_text('Email and Password').click()
 	browser.find_by_tag('input').first.fill(USER)
@@ -47,15 +47,15 @@ def startYoga():
 	browser.find_by_text("Tap to begin").click()
 
 def loginMeditate():
-	PASS = "your headspace password"
-	USER = "yout headspace email"
+	PASS = "uq*26QbY4wh#&IkDD77iZLXZF!65"
+	USER = "thedubiouslimabean@hotmail.com"
 	browser.visit('http://headspace.com/login')
 	browser.find_by_name("email").fill(USER)
 	browser.find_by_name('password').fill(PASS)
 	browser.find_by_text("Log in")[1].click()
 
 def startMeditate():
-	browser.find_by_xpath('/html/body/div/div[1]/div[2]/div/div/div/div/div[2]/div/button/div').click()
+	browser.find_by_xpath('/html/body/div/div[1]/div[2]/div/div/div/div/div[1]').click()
 	browser.find_by_text("Begin").first.click()
 	
 def closeBrowser():
@@ -69,6 +69,7 @@ def main():
 	startYoga()
 	time.sleep(yogasecs)
 	loginMeditate()
+	time.sleep(15)
 	startMeditate()
 	
 	

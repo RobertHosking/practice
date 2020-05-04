@@ -6,6 +6,8 @@ browser = Browser('chrome')
 
 yogamins = int(sys.argv[1])
 yogasecs = yogamins*60
+extrasecs = 120
+meditatesecs = 10*60 + extrasecs
 
 def loginYoga():
 	PASS = "VUeUXco5jLKoY#4hX$T38fgPBAv^FF0hKBdMq*63"
@@ -64,13 +66,16 @@ def closeBrowser():
 
 def main():
 	loginYoga()
+	browser.driver.maximize_window()
 	time.sleep(3)
 	configYoga()
 	startYoga()
 	time.sleep(yogasecs)
 	loginMeditate()
-	time.sleep(15)
+	time.sleep(10)
 	startMeditate()
+	time.sleep(meditatesecs)
+	browser.quit()
 	
 	
 if __name__ == "__main__":
